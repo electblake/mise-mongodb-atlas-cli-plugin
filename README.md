@@ -22,16 +22,16 @@ software need those dependencies installed separately.
 
 ## Installation
 
-Install directly from GitHub, then activate Atlas CLI globally:
+Install directly from GitHub, then activate Atlas CLI in the current project:
 
 ```sh
 mise plugins install mongodb-atlas-cli https://github.com/electblake/mise-mongodb-atlas-cli-plugin.git
-mise use -g mongodb-atlas-cli@latest
+mise use mongodb-atlas-cli@latest
 atlas --version
 ```
 
 To pin Atlas CLI in a consuming project, run `mise use mongodb-atlas-cli@1.59.2`
-from that project instead of the global activation command.
+from that project instead of the `@latest` command.
 
 ## Implementation
 
