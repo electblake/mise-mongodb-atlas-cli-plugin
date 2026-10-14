@@ -13,3 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added stable release discovery, published SHA-256 checksum verification, and `atlas` executable PATH configuration.
 - Added installation documentation and a GitHub Actions installation matrix for all five supported platforms.
 - Added the MIT license and repository line-ending and temporary-file rules.
+
+### Changed
+
+- Made direct GitHub installation and global activation the primary setup instructions.

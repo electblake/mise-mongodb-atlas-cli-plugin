@@ -20,36 +20,18 @@ Older versions depend on the assets and checksums actually published upstream.
 This plugin installs Atlas CLI only; features requiring mongosh, Docker, or other
 software need those dependencies installed separately.
 
-## Local use
-
-Run from this plugin directory, including after moving it to its own project:
-
-```sh
-mise plugins link mongodb-atlas-cli .
-mise ls-remote mongodb-atlas-cli
-mise install mongodb-atlas-cli@1.59.2
-mise exec mongodb-atlas-cli@1.59.2 -- atlas --version
-mise exec mongodb-atlas-cli@1.59.2 -- atlas --help
-mise which --tool mongodb-atlas-cli@1.59.2 atlas
-```
-
-Activate it in a consuming project with:
-
-```sh
-mise use mongodb-atlas-cli@1.59.2
-```
-
-Use `@latest` instead of a pinned version to select the newest stable release.
-Relink after moving the plugin directory. `mise plugins uninstall mongodb-atlas-cli`
-removes the link when it is no longer needed.
-
 ## Installation
+
+Install directly from GitHub, then activate Atlas CLI globally:
 
 ```sh
 mise plugins install mongodb-atlas-cli https://github.com/electblake/mise-mongodb-atlas-cli-plugin.git
-mise use mongodb-atlas-cli@latest
+mise use -g mongodb-atlas-cli@latest
 atlas --version
 ```
+
+To pin Atlas CLI in a consuming project, run `mise use mongodb-atlas-cli@1.59.2`
+from that project instead of the global activation command.
 
 ## Implementation
 
