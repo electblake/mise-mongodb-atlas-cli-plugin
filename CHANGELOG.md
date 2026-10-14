@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-14
+
 ### Added
 
 - Added a Lua mise plugin for installing the official MongoDB Atlas CLI archives on Windows x64, macOS x64/ARM64, and Linux x64/ARM64.
