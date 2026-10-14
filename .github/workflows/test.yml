@@ -1,0 +1,37 @@
+name: Test
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-15-intel, macos-15, windows-2022]
+    runs-on: ${{ matrix.os }}
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      MISE_HTTP_RETRIES: "0"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3
+        with:
+          version: 2026.10.9
+          install: false
+          cache: false
+      - name: Link plugin
+        run: mise plugins link mongodb-atlas-cli .
+      - name: List releases
+        run: mise ls-remote mongodb-atlas-cli
+      - name: Install pinned release
+        run: mise install mongodb-atlas-cli@1.59.2
+      - name: Check version
+        run: mise exec mongodb-atlas-cli@1.59.2 -- atlas --version
+      - name: Check help
+        run: mise exec mongodb-atlas-cli@1.59.2 -- atlas --help
+      - name: Resolve executable
+        run: mise which --tool mongodb-atlas-cli@1.59.2 atlas
